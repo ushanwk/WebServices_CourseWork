@@ -1,0 +1,20 @@
+# Deployment-green.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crypto-exchange-green
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: crypto-exchange-green
+  template:
+    metadata:
+      labels:
+        app: crypto-exchange-green
+    spec:
+      containers:
+        - name: crypto-exchange-container
+          image: crypto-exchange-service:green-version
+          ports:
+            - containerPort: 3000
